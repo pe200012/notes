@@ -1,0 +1,15 @@
+<Source: https://www.reddit.com/r/SteamDeck/comments/wqfwvf/issues_installing_from_the_aur>
+
+For disk space efficiency reasons, Valve did a clean-up of several Arch packages. They marked as installed, but miss a several files.
+
+A lot of compilation problems are fixed by reinstalling glibc and linux-api-headers:
+
+pacman -S glibc linux-api-headers
+
+Source of the idea: Compiling C++ code
+
+UPDATE: Another useful command which restores all packages to the original state:
+
+pacman -Qknq | cut -d' ' -f1 | sort -u | pacman -S -
+
+It consists of several steps: pacman -Qknq produces a list of packages with missing files, cut and sort -u make it short, and pacman -S - re-installs those packages. Take note that by default there's not much free space on the root partition, so expansion via OverlayFS is recommended (rwfus can be used, or a custom mount entry/script).
