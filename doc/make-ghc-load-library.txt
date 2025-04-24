@@ -1,0 +1,4 @@
+please load cbits lib, GHC!
+
+ghc-options:
+  "$locals": -optl=-Wl,-rpath,./cbits/lib
