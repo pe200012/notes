@@ -1,0 +1,14 @@
+<from https://stackoverflow.com/questions/5917413/concatenate-multiple-files-but-include-filename-as-section-headers>
+
+tail -n +1 file1.txt file2.txt file3.txt
+
+Output:
+
+==> file1.txt <==
+<contents of file1.txt>
+
+==> file2.txt <==
+<contents of file2.txt>
+
+==> file3.txt <==
+<contents of file3.txt>
