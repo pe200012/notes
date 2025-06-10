@@ -1,0 +1,15 @@
+<from https://stackoverflow.com/a/69735374/8269945>
+
+When you want to assign a free variable in a closure, you will normally see:
+
+Local variable found defined in an enclosing scope must be final or effectively final
+
+either mark it final, or wrap it in an array as a workaround:
+
+    int[] result = new int[1];
+    hibernateSession.doWork(new Work() {
+        @Override
+        public void execute(Connection conn) throws SQLException {
+            result[0] = 1;
+        }
+    });
