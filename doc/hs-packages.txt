@@ -1,0 +1,417 @@
+================================================================================
+                        HASKELL PACKAGES REFERENCE
+================================================================================
+
+==== HIGHER-ORDER FIXPOINTS & AST/COMPILER TOOLS ====
+
+compdata (Recommended)
+
+    Designed for "Compositional Data Types"
+
+    Features: It provides HFunctor, hcata, and tools for modular compilers.
+
+multirec
+
+    A library for generic programming with systems of mutually recursive types.
+
+    Use Case: Best if your goal is generic programming over a family of recursive types.
+
+recursion-schemes
+
+    The standard for recursion schemes.
+
+bound
+
+    Specifically for managing variable binding (scopes) in a lambda-calculus-like language.
+
+==== OPTICS & LENSES ====
+
+lens
+    The most comprehensive optics library. Provides Lens, Prism, Traversal, Iso
+    and more. Industry standard but heavy dependency.
+
+optics
+    Modern alternative to lens with better type errors and cleaner design.
+    Uses opaque types instead of van Laarhoven encoding.
+
+microlens
+    Minimal lens library with no dependencies. Good for libraries that want
+    lens-like functionality without the full lens dependency.
+
+==== PARSING ====
+
+megaparsec
+    Modern parser combinator library. Excellent error messages, good performance.
+    Successor to parsec with better ergonomics.
+
+attoparsec
+    High-performance parser for ByteString/Text. Best for parsing binary
+    protocols or when speed is critical.
+
+flatparse
+    Ultra-high-performance parsing. Uses machine-level optimizations.
+    Good for when attoparsec isn't fast enough.
+
+alex + happy
+    Lexer and parser generators. Traditional approach for complex grammars.
+    Used by GHC itself.
+
+==== EFFECT SYSTEMS ====
+
+effectful
+    Modern effect system with good performance. Uses ReaderT IO pattern
+    under the hood for efficiency. Actively maintained.
+
+polysemy
+    Algebraic effects library. Clean syntax but historically slower.
+    Good for understanding effect systems conceptually.
+
+fused-effects
+    Effect system using higher-order effects. Good balance of features
+    and performance.
+
+mtl
+    Classic monad transformer library. Simple, well-understood, but
+    can have n² instances problem.
+
+transformers
+    Base library for monad transformers. mtl builds on this.
+
+==== STREAMING / CONDUIT / PIPES ====
+
+conduit
+    Resource-safe streaming library. Handles cleanup properly.
+    Good for IO-heavy streaming.
+
+pipes
+    Elegant streaming library with clean mathematical foundations.
+    Good for understanding streaming conceptually.
+
+streaming
+    Minimal streaming library. Simple and effective.
+
+streamly
+    High-performance streaming with fusion. Good when performance matters.
+
+==== CONCURRENCY & PARALLELISM ====
+
+async
+    Simple async/await style concurrency. Essential for concurrent Haskell.
+
+stm
+    Software Transactional Memory. Composable concurrent transactions.
+    Built into GHC, very powerful.
+
+unliftio
+    Utilities for lifting IO operations through monad transformers.
+    Works well with async and exceptions.
+
+parallel
+    Basic parallelism primitives (par, pseq).
+
+==== TESTING ====
+
+hspec
+    BDD-style testing framework. Clean syntax, good integration.
+
+tasty
+    Flexible testing framework that can integrate multiple test providers.
+
+QuickCheck
+    Property-based testing. Generates random test cases.
+    Essential for thorough testing.
+
+hedgehog
+    Modern property-based testing with better shrinking than QuickCheck.
+
+smallcheck
+    Exhaustive property testing for small domains.
+
+==== JSON & SERIALIZATION ====
+
+aeson
+    The standard JSON library. Fast and comprehensive.
+
+binary
+    Efficient binary serialization.
+
+cereal
+    Similar to binary with slightly different trade-offs.
+
+serialise (cborg)
+    CBOR serialization. Good for compact binary formats.
+
+==== WEB FRAMEWORKS ====
+
+servant
+    Type-safe web APIs. Generate clients, servers, and docs from types.
+    Very powerful for API-first development.
+
+scotty
+    Simple, Sinatra-inspired web framework. Good for small projects.
+
+yesod
+    Full-featured web framework with type-safe routing, forms, etc.
+
+warp
+    High-performance HTTP server. Used as backend by most frameworks.
+
+wai
+    Web Application Interface. Standard interface between servers and apps.
+
+==== DATABASE ====
+
+persistent
+    Type-safe database access with migrations. Works with multiple backends.
+
+esqueleto
+    Type-safe SQL DSL that works with persistent.
+
+hasql
+    High-performance PostgreSQL library.
+
+postgresql-simple
+    Simple PostgreSQL library. Less type-safe but straightforward.
+
+beam
+    Type-safe SQL library with support for multiple databases.
+
+opaleye
+    Type-safe PostgreSQL queries using Arrows.
+
+==== TYPE-LEVEL PROGRAMMING ====
+
+singletons
+    Promotes term-level functions to type-level. Dependent types in Haskell.
+
+vinyl
+    Extensible records using type-level lists.
+
+dependent-map / dependent-sum
+    Dependent typing utilities.
+
+constraints
+    Working with type class constraints as first-class values.
+
+reflection
+    Reify arbitrary terms into types and vice versa.
+
+==== GENERIC PROGRAMMING ====
+
+generic-lens
+    Derive lenses generically using GHC.Generics.
+
+generic-deriving
+    Utilities for GHC.Generics-based programming.
+
+syb (Scrap Your Boilerplate)
+    Classic generic programming library.
+
+==== CATEGORY THEORY ABSTRACTIONS ====
+
+semigroupoids
+    Semigroup-like analogs of standard type classes (Functor without pure, etc.).
+
+bifunctors
+    Bifunctor, Bitraversable, etc.
+
+profunctors
+    Profunctor abstraction and utilities.
+
+comonad
+    Comonad type class and instances.
+
+free
+    Free monads and related structures. Good for DSL interpretation.
+
+kan-extensions
+    Kan extensions, Yoneda, Coyoneda, etc.
+
+adjunctions
+    Adjunction type class and utilities.
+
+==== PRELUDE ALTERNATIVES ====
+
+relude
+    Safe, modern prelude. Removes partial functions, adds common imports.
+
+protolude
+    Minimal prelude alternative. Good starting point.
+
+rio
+    Prelude + best practices from the Haskell community.
+
+==== TEXT PROCESSING ====
+
+text
+    Efficient Unicode text type. Essential for any text handling.
+
+bytestring
+    Efficient byte sequences. For binary data.
+
+text-icu
+    ICU bindings for advanced Unicode operations.
+
+regex-tdfa
+    POSIX regex. Pure Haskell implementation.
+
+pandoc
+    Universal document converter. Extremely powerful for document transformation.
+
+==== COMMAND-LINE ====
+
+optparse-applicative
+    Declarative command-line option parsing. Industry standard.
+
+cmdargs
+    Alternative CLI parser with multiple modes.
+
+brick
+    Terminal UI library. Build interactive terminal applications.
+
+ansi-terminal
+    ANSI escape codes for terminal formatting.
+
+==== ALGORITHMS & DATA STRUCTURES ====
+
+containers
+    Standard containers: Map, Set, Seq, etc. Comes with GHC.
+
+unordered-containers
+    Hash-based Map and Set. Faster for many use cases.
+
+vector
+    High-performance arrays. Boxed and unboxed variants.
+
+hashtables
+    Mutable hash tables in ST/IO.
+
+array
+    Basic mutable/immutable arrays.
+
+fingertree
+    Finger tree data structure. Efficient sequences with O(1) access to ends.
+
+==== RANDOM & PROBABILITY ====
+
+random
+    Standard random number generation (new API in recent versions).
+
+mwc-random
+    High-quality, fast random numbers.
+
+MonadRandom
+    Random number generation in a monad.
+
+statistics
+    Statistical functions and distributions.
+
+==== TIME & DATES ====
+
+time
+    Standard date/time library. Comes with GHC.
+
+chronos
+    High-performance time library.
+
+hourglass
+    Alternative time library.
+
+==== CONFIGURATION ====
+
+dhall
+    Typed configuration language. Guarantees termination.
+    Excellent for complex, type-safe configs.
+
+yaml
+    YAML parsing/rendering.
+
+tomland
+    TOML parsing with bidirectional codecs.
+
+configurator
+    Configuration with automatic reloading.
+
+==== LOGGING & DEBUGGING ====
+
+katip
+    Structured logging with context.
+
+monad-logger
+    Simple logging monad.
+
+co-log
+    Composable contravariant logging.
+
+pretty-simple
+    Pretty-printing for debugging.
+
+==== ERROR HANDLING ====
+
+exceptions
+    Extensible exceptions in monad transformers.
+
+safe-exceptions
+    Safe exception handling patterns.
+
+either
+    Utilities for Either.
+
+validation
+    Validation with error accumulation (vs fail-fast Either).
+
+==== NUMERIC & SCIENTIFIC ====
+
+linear
+    Linear algebra types (vectors, matrices, quaternions).
+
+hmatrix
+    Numeric linear algebra (bindings to BLAS/LAPACK).
+
+scientific
+    Arbitrary-precision scientific numbers.
+
+arithmoi
+    Number theory library.
+
+==== DOCUMENTATION & LITERATE PROGRAMMING ====
+
+haddock
+    Standard documentation generator.
+
+hakyll
+    Static site generator. Great for blogs, docs sites.
+
+==== BUILD & TOOLING ====
+
+hlint
+    Linter with suggestions for improving code.
+
+fourmolu / ormolu
+    Code formatters. Consistent style.
+
+ghcid
+    Fast GHC daemon for rapid feedback during development.
+
+hpack
+    Generate .cabal from package.yaml.
+
+==== FUN & INTERESTING ====
+
+gloss
+    Simple graphics library. Good for visualizations and games.
+
+diagrams
+    Declarative vector graphics.
+
+tidal
+    Live coding music.
+
+sbv
+    SMT-based verification. Prove properties about your code.
+
+criterion
+    Benchmarking library with statistical analysis.
+
+liquidhaskell
+    Refinement types for Haskell. Prove more at compile time.
